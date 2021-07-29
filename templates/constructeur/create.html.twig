@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez Yass téléphonie{% endblock %}
+
+{% block body %}
+
+    {% if creation %}
+
+        <h1> Formulaire de création de constructeur </h1>
+    {% else %}
+        <h1> Formulaire d'édition de constructeur </h1>
+    {% endif %}
+    {{ form_start(formulaire) }}
+
+        <div class="row" >
+
+            {{form_row(formulaire.name)}}
+            {{form_row(formulaire.imageLogo)}}
+            {{form_row(formulaire.origin)}}
+            {{form_row(formulaire.description)}}
+            {{form_row(formulaire.address)}}
+
+        </div>
+            <button class="btn btn-primary" type="submit">Valider</button>
+    {{ form_end(formulaire) }}
+{% endblock %}

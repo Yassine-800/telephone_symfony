@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez Yass téléphonie{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-around">
+
+      <a class="btn btn-warning" href="{{path ('create_constructeur')}}"> Ajouter un constructeur</a>
+        {% for constructeur in constructeurs %}
+
+           <div class="card mt-5" style="max-width: 18rem;">
+            <img src="{{asset('uploads/images/constructeurs/')}}{{constructeur.imageLogo}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{constructeur.name}}</strong></h5>
+                    <p class="card-text">{{constructeur.description}}</p>
+                </div>
+                        <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{constructeur.origin}}  </li>
+                    <li class="list-group-item"> {{constructeur.address}} </li>
+                        </ul>
+                <div class="card-body">
+                    <a href=" {{path ('show_constructeur', {id: constructeur.id})}}" class="btn btn-primary">Voir en détails</a>
+                    <a href="{{path ('delete_constructeur', {id: constructeur.id})}}" class="btn btn-danger"> Supprimer le constructeur</a>
+                </div>
+           </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez Yass téléphonie{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-center">
+
+
+
+           <div class="card mt-5" style="max-width: 18rem;">
+            <img src="{{asset('uploads/images/telephones/')}}{{telephone.image}}" class="card-img-top" alt="phone_image">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{telephone.modelName}}</strong></h5>
+                    <p class="card-text">{{telephone.description}}</p>
+                </div>
+                        <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{telephone.stockage}} gigas </li>
+                    <li class="list-group-item"> {{telephone.price}} euros </li>
+                        </ul>
+                <div class="card-body">
+
+                    <a href=" {{path ('edit_telephone', {id: telephone.id})}}" class="btn btn-success">Modifier le téléphone</a>
+                    <a class="btn btn-warning" href="{{path ('telephone')}}"> Retour à la liste</a>
+                </div>
+           </div>
+
+
+
+    </div>
+
+{% endblock %}

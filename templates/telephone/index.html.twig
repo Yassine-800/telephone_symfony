@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez Yass téléphonie{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-around">
+
+        <a class="btn btn-warning" href="{{path ('create_telephone')}}"> Ajouter un téléphone</a>
+        <a class="btn btn-primary" href="{{path ('constructeur')}}"> Voir les constructeurs</a>
+        {% for telephone in telephones %}
+
+           <div class="card mt-5" style="max-width: 18rem;">
+            <img src="{{asset('uploads/images/telephones/')}}{{telephone.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{telephone.modelName}}</strong></h5>
+                    <p class="card-text">{{telephone.description}}</p>
+                    <p class="card-text">{{telephone.constructeur.name}}</p>
+                </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> {{telephone.stockage}} gigas </li>
+                            <li class="list-group-item"> {{telephone.price}} euros </li>
+                            <li class="list-group-item"> {{telephone.user.username}}  </li>
+                        </ul>
+                <div class="card-body">
+                    <a href=" {{path ('show_telephone', {id: telephone.id})}}" class="btn btn-primary">Voir en détails</a>
+
+                </div>
+               {%  if app.user %}
+                    {%  if app.user.id is same as (telephone.user.id) %}
+                        <a href=" {{path ('edit_telephone', {id: telephone.id})}}" class="btn btn-success">Modifier le téléphone</a>
+                        <a href="{{path ('delete_telephone', {id: telephone.id})}}" class="btn btn-danger"> Supprimer le téléphone</a>
+                    {% endif %}
+               {% endif %}
+           </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue chez Yass téléphonie{% endblock %}
+
+{% block body %}
+
+    <div class="row justify-content-center">
+
+
+
+           <div class="card mt-5" style="max-width: 18rem;">
+            <img src="{{asset('uploads/images/constructeurs/')}}{{constructeur.imageLogo}}" class="card-img-top" alt="constructeur_image">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{constructeur.name}}</strong></h5>
+                    <p class="card-text">{{constructeur.description}}</p>
+                </div>
+                        <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{constructeur.origin}}  </li>
+                    <li class="list-group-item"> {{constructeur.address}} </li>
+                        </ul>
+                <div class="card-body">
+                    <a href=" {{path ('edit_constructeur', {id: constructeur.id})}}" class="btn btn-success">Modifier le constructeur</a>
+                    <a class="btn btn-warning" href="{{path ('constructeur')}}"> Retour à la liste</a>
+                </div>
+           </div>
+
+
+
+    </div>
+
+{% endblock %}
